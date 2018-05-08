@@ -1,0 +1,1863 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>会計システム - 未収入金入力</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
+  <!-- Bootstrap core CSS     -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="../assets/css/pretty-checkbox.min.css" rel="stylesheet" />
+  <!--  Material Dashboard CSS    -->
+  <!--link href="../assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" /-->
+  <link href="../assets/css/material-dashboard-pro.css" rel="stylesheet" />
+  <!--  CSS for Demo Purpose, don't include it in your project     -->
+  <link href="../assets/css/demo.css" rel="stylesheet" />
+  <!--     Fonts and icons     -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="sidebar-mini">
+  <div class="wrapper">
+    <div class="sidebar" data-active-color="purple" data-image="../assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+            テ
+        </a>
+        <a href="#" class="simple-text logo-normal">
+            テスト 太郎
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav" style="margin-top: 1px;">
+          <li>
+            <a data-toggle="collapse" href="#pagesInputs">
+                  <i class="material-icons">input</i>
+                  <p> 新規入力
+                      <b class="caret"></b>
+                  </p>
+              </a>
+            <div id="pagesInputs">
+              <ul class="nav">
+                <li>
+                  <a href="paymentinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 支払 </span>
+                    <span class="sidebar-normal"> 支払入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 預源 </span>
+                    <span class="sidebar-normal"> 預り源泉税付支払入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 仮申 </span>
+                    <span class="sidebar-normal"> 仮払申請入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 仮清 </span>
+                    <span class="sidebar-normal"> 仮払清算入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 立清 </span>
+                    <span class="sidebar-normal"> 立替清算入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="transferinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 振替 </span>
+                    <span class="sidebar-normal"> 振替入力 </span>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="accountsreceivableinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 未収 </span>
+                    <span class="sidebar-normal"> 未収入金入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="twoinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 2 </span>
+                    <span class="sidebar-normal"> 2伝票(仮) </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#pagesMaintenances">
+                  <i class="material-icons">view_module</i>
+                  <p> メンテナンス
+                      <b class="caret"></b>
+                  </p>
+              </a>
+            <div id="pagesMaintenances">
+              <ul class="nav">
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 伝 </span>
+                    <span class="sidebar-normal"> 伝票 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="regularlyinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 定 </span>
+                    <span class="sidebar-normal"> 定期・定額 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> パ </span>
+                    <span class="sidebar-normal"> パターン </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                  <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                  <i class="material-icons visible-on-sidebar-mini">view_list</i>
+              </button>
+          </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"> 未収入金入力 </a>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row" style="margin: 10px;">
+            <a href="#"> パターン引用 </a>
+          </div>
+          <div class="row">
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapseHeader" data-background-color="orange" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    ヘッダ
+                  </h5>
+                  <div class="pull-right text-right card-header-remark3">
+                    経理担当<br> テスト支払先<br> 請求金額合計 3,160円
+                  </div>
+                </div>
+                <div id="collapseHeader" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <form style="margin: 10px">
+                      <div class="row">
+                        <div class="col-md-2">
+                          モード
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <select class="form-control" id="selMode" name="selMode">
+                              <option value="1">1</option>
+                              <option value="2" selected="selected">2</option>
+                              <option value="3">3</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            伝票区分
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト伝票区分
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            店・事業部
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角2桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          経理担当
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          伝票日付
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control datepicker" id="txtPaymentNumber" placeholder="YYYY/MM/DD">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          伝票No.
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentNumber" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          請求書日付
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control datepicker" id="txtPaymentNumber" placeholder="YYYY/MM/DD">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          請求書No.
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentNumber" placeholder="半角8桁">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#siharaisaki-form">
+                            支払先
+                          </a>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角6桁">
+                          </div>
+                        </div>
+                        <div class="col-md-7" style="font-size: 1vw;">
+                          テスト支払先
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            債権計上部門
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト部門
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            プロジェクト
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角2桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テストプロジェクト
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapseDeposit" data-background-color="green" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    入金予定
+                  </h5>
+                  <div class="pull-right card-header-remark">
+                    2018/01/25 銀行振込払い
+                  </div>
+                </div>
+                <div id="collapseDeposit" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <form style="margin: 10px">
+                      <div class="row">
+                        <div class="col-md-2">
+                          入金予定日
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control datepicker" id="txtPaymentNumber" placeholder="YYYY/MM/DD">
+                          </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            回収方法
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角6桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト回収
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            差引
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角6桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト差引
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            摘要１
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト摘要１
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            摘要２
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト摘要２
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          中分類
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" value="テスト中分類" style="font-size: 1vw;" disabled>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          小分類
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" value="テスト小分類" style="font-size: 1vw;" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            債権計上部門
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト債権計上部門
+                        </div>
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            取引先
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テスト取引先
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#" data-toggle="modal" data-target="#payment-form" style="font-size: 1vw;">
+                            プロジェクト
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="font-size: 1vw;">
+                          テストプロジェクト
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          メモ
+                        </div>
+                        <div class="col-md-10">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <a href="#" data-toggle="modal" data-target="#payment-form">
+                            請求書（0）
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          税抜額合計
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          税額合計
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          税込額合計
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁" value="3,000" disabled>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapsePayment" data-background-color="green" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    請求書
+                  </h5>
+                  <div class="pull-right text-right card-header-remark">
+                    金額 3,000円 税額 160円 合計 3,160円
+                  </div>
+                </div>
+                <div id="collapsePayment" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <form style="margin: 10px">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#invoiceHeader">見出情報</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#invoiceDetail">明細情報</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div id="invoiceHeader" class="tab-pane fade in active">
+                          <div class="row">
+                            <div class="col-md-2">
+                              得意先名
+                            </div>
+                            <div class="col-md-10">
+                              <div class="form-group" style="margin-top: -5px;">
+                                <input type="text" class="form-control" id="txtPaymentNumber" placeholder="全角50桁">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-2">
+                              担当部門名
+                            </div>
+                            <div class="col-md-10">
+                              <div class="form-group" style="margin-top: -5px;">
+                                <input type="text" class="form-control" id="txtPaymentNumber" placeholder="全角30桁">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-2">
+                              担当者名
+                            </div>
+                            <div class="col-md-10">
+                              <div class="form-group" style="margin-top: -5px;">
+                                <input type="text" class="form-control" id="txtPaymentNumber" placeholder="全角30桁">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="invoiceDetail" class="tab-pane fade">
+                          <table class="table table-condensed" style="font-size: 12px;">
+                            <thead class="text-warning">
+                              <th>
+                                <div class="pretty p-icon p-jelly">
+                                  <input type="checkbox" />
+                                  <div class="state p-info-o">
+                                    <i class="icon mdi mdi-check-all" style="font-size: 14px;"></i>
+                                    <label style="margin-top: -5px;">　</label>
+                                  </div>
+                                </div>
+                              </th>
+                              <th>更新</th>
+                              <th>削除</th>
+                              <th>行</th>
+                              <th>請求品名１</th>
+                              <th>請求品名２</th>
+                              <th>税抜額</th>
+                              <th>税額</th>
+                              <th>税込額</th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#invoicedetail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">create</i>
+                                  </a>
+                                </td>
+                                <td>
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td>1</td>
+                                <td>品名１</td>
+                                <td>品名２</td>
+                                <td>
+                                  <div class="text-right">1,000</div>
+                                </td>
+                                <td>
+                                  <div class="text-right">0</div>
+                                </td>
+                                <td>
+                                  <div class="text-right">1,000</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#invoicedetail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">create</i>
+                                  </a>
+                                </td>
+                                <td>
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td>2</td>
+                                <td>ああああ</td>
+                                <td>いいいい</td>
+                                <td>
+                                  <div class="text-right">2,000</div>
+                                </td>
+                                <td>
+                                  <div class="text-right">160</div>
+                                </td>
+                                <td>
+                                  <div class="text-right">2,160</div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="bs-docs-section">
+                            <div class="row">
+                              <div class="col-lg-10">
+                                <p class="bs-component" style="margin-left: 20px;">
+                                  <a href="#" class="btn btn-primary btn-default btn-fixed" data-toggle="modal" data-target="#invoicedetail-form">
+                                    <i class="material-icons">add_circle_outline</i>
+                                    追加
+                                  </a>
+                                  <a href="#" class="btn btn-primary btn-default btn-fixed">
+                                    <i class="material-icons">remove_circle_outline</i>
+                                    削除
+                                  </a>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapseDetail" data-background-color="blue" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    明細
+                  </h5>
+                  <div class="pull-right card-header-remark">
+                    金額 3,000円 税額 160円 合計 3,160円
+                  </div>
+                </div>
+                <div id="collapseDetail" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <table class="table table-condensed" style="font-size: 12px;">
+                      <thead class="text-warning">
+                        <th>
+                          <div class="pretty p-icon p-jelly">
+                            <input type="checkbox" />
+                            <div class="state p-info-o">
+                              <i class="icon mdi mdi-check-all" style="font-size: 14px;"></i>
+                              <label style="margin-top: -5px;">　</label>
+                            </div>
+                          </div>
+                        </th>
+                        <th>更新</th>
+                        <th>削除</th>
+                        <th>行</th>
+                        <th>摘要１</th>
+                        <th>摘要２</th>
+                        <th>負担部門</th>
+                        <th>明細税抜金額</th>
+                        <th>消費税額</th>
+                        <th>行金額</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="pretty p-icon p-jelly">
+                              <input type="checkbox" />
+                              <div class="state p-primary">
+                                <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                <label style="margin-top: -5px;">　</label>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                              <i class="material-icons">create</i>
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <i class="material-icons">clear</i>
+                            </a>
+                          </td>
+                          <td>1</td>
+                          <td>その他消耗品費</td>
+                          <td>なし</td>
+                          <td>百貨店経理業務部</td>
+                          <td>
+                            <div class="text-right">1,000</div>
+                          </td>
+                          <td>
+                            <div class="text-right">0</div>
+                          </td>
+                          <td>
+                            <div class="text-right">1,000</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="pretty p-icon p-jelly">
+                              <input type="checkbox" />
+                              <div class="state p-primary">
+                                <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                <label style="margin-top: -5px;">　</label>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                              <i class="material-icons">create</i>
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#">
+                              <i class="material-icons">clear</i>
+                            </a>
+                          </td>
+                          <td>2</td>
+                          <td>雑費</td>
+                          <td>なし</td>
+                          <td>総務企画部</td>
+                          <td>
+                            <div class="text-right">2,000</div>
+                          </td>
+                          <td>
+                            <div class="text-right">160</div>
+                          </td>
+                          <td>
+                            <div class="text-right">2,160</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="bs-docs-section">
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p class="bs-component" style="margin-left: 20px;">
+                            <a href="#" class="btn btn-primary btn-default btn-fixed" data-toggle="modal" data-target="#detail-form">
+                              <i class="material-icons">add_circle_outline</i>
+                              追加
+                            </a>
+                            <a href="#" class="btn btn-primary btn-default btn-fixed">
+                              <i class="material-icons">remove_circle_outline</i>
+                              削除
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pretty p-icon p-jelly">
+                  <input id="denReg" type="checkbox" />
+                  <div class="state p-primary">
+                    <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                    <label style="margin-top: -3px; color: #000000;">伝票登録</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="pretty p-icon p-jelly" style="margin-top: 25px;">
+                  <input id="patternReg" type="checkbox" />
+                  <div class="state p-primary">
+                    <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                    <label style="margin-top: -3px; color: #000000;">パターン登録</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group label-floating">
+                  <label class="control-label">グループ</label>
+                  <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                    <option value="1" selected="selected">グループ１</option>
+                    <option value="2">グループ２</option>
+                    <option value="3">グループ３</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group label-floating" style="margin-left: 5px;">
+                  <label class="control-label">コード</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group label-floating" style="margin-left: 5px;">
+                  <label class="control-label">名称</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="pretty p-icon p-jelly" style="margin-top: 20px;">
+                  <input id="regularReg" type="checkbox" />
+                  <div class="state p-primary">
+                    <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                    <label style="margin-top: -3px; color: #000000;">定期・定額登録</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group label-floating">
+                  <label class="control-label">グループ</label>
+                  <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                    <option value="1" selected="selected">グループ１</option>
+                    <option value="2">グループ２</option>
+                    <option value="3">グループ３</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group label-floating" style="margin-left: 5px;">
+                  <label class="control-label">コード</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group label-floating" style="margin-left: 5px;">
+                  <label class="control-label">名称</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="showNotification('bottom','right', '99021323')">確定</button>
+          </div>
+
+          <!-- ===== Edit Dialog ===== -->
+          <div class="modal" id="detail-form" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">明細</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px;">
+                                  <label for="txtTekiyo1" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      摘要１
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTekiyo1" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 20px;">
+                                テスト摘要１
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px;">
+                                  <label for="txtTyuBunrui" style="color: #000000;">
+                                    中分類
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTyuBunrui" value="テスト中分類１" disabled>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px; margin-left: 2px;">
+                                  <label for="txtTyuBunrui" style="color: #000000;">
+                                    小分類
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTyuBunrui" value="テスト小分類１" disabled>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtTekiyo2" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      摘要２
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTekiyo2" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                テスト摘要２
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="selZei" style="color: #000000;">
+                                    税処理区分
+                                  </label>
+                                  <select class="form-control" id="selZei" name="selZei">
+                                    <option value="1">なし</option>
+                                    <option value="2" selected="selected">課税仕入８％</option>
+                                    <option value="3">課税仕入１０％</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                <div class="form-group" style="margin-top: 0px; margin-left: 5px;">
+                                  <div class="radio-inline">
+                                    <div class="pretty p-icon p-round p-jelly">
+                                      <input type="radio" name="zei">
+                                      <div class="state p-primary">
+                                        <label style="color: #000000; margin-top: -3px;">外税</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="radio-inline">
+                                    <div class="pretty p-icon p-round p-jelly">
+                                      <input type="radio" name="zei">
+                                      <div class="state p-primary">
+                                        <label style="color: #000000; margin-top: -3px;">内税</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtBmn" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      負担部門
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtBmn" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                外販事業部
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtMeiKin" style="color: #000000;">
+                                    明細金額
+                                  </label>
+                                  <input type="text" class="form-control text-right" id="txtMeiKin" placeholder="数字15桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtPrj" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      プロジェクト
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtPrj" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                テストプロジェクト
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtZeiKin" style="color: #000000;">
+                                    消費税額
+                                  </label>
+                                  <input type="text" class="form-control text-right" id="txtZeiKin" placeholder="数字15桁">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="text-center">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only" style="color: #000000;">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only" style="color: #000000;">Next</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="pull-right" style="margin-top: -70px;">
+                                <button type="button" class="btn btn-primary">連続作成</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="invoicedetail-form" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">請求書明細</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-md-3">
+                          請求品名
+                        </div>
+                        <div class="col-md-9">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="全角100桁">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control" id="txtPaymentDest" placeholder="全角100桁">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          税区分
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <select class="form-control" id="selZei" name="selZei">
+                              <option value="1">なし</option>
+                              <option value="2" selected="selected">課税仕入８％</option>
+                              <option value="3">課税仕入１０％</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group" style="margin-top: 0px; margin-left: 5px;">
+                            <div class="radio-inline">
+                              <div class="pretty p-icon p-round p-jelly">
+                                <input type="radio" name="zei" checked>
+                                <div class="state p-primary">
+                                  <label style="color: #000000; margin-top: -3px;">外税</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="radio-inline">
+                              <div class="pretty p-icon p-round p-jelly">
+                                <input type="radio" name="zei">
+                                <div class="state p-primary">
+                                  <label style="color: #000000; margin-top: -3px;">内税</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          税抜額
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数字13桁">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          税額
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数字13桁">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          税込額
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group" style="margin-top: -10px;">
+                            <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数字13桁" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="text-center">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only" style="color: #000000;">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only" style="color: #000000;">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="pull-right" style="margin-top: -70px;">
+                          <button type="button" class="btn btn-primary">連続作成</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="accountsreceivabledetail-form" tabindex="-1">
+            <div class="modal-dialog modal-lg" style="margin-top: 5px;">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">明細</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header" data-background-color="blue" role="tab" id="headingTwo">
+                              借方
+                              <div class="pull-right" style="margin-top: 10px; font-size: 11px;">
+                                金額 3,000円 税額 160円 合計 3,160円
+                              </div>
+                            </div>
+                            <div class="card-content">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    摘要１
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト摘要１
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    摘要２
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト摘要２
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  中分類
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" value="テスト中分類" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  小分類
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" value="テスト小分類" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    負担部門
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト負担部門
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    取引先
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト取引先
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form" style="font-size: 11px;">
+                                    プロジェクト
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テストプロジェクト
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    相手先
+                                  </a>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                                      <option value="1">1:共通</option>
+                                      <option value="2" selected="selected">2:仕入先</option>
+                                      <option value="3">3:得意先</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px; margin-left: 5px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  テスト相手先
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  明細金額
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group" style="margin-top: -10px; margin-left: 5px;">
+                                    <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                                      <option value="1">なし</option>
+                                      <option value="2" selected="selected">課税仕入８％</option>
+                                      <option value="3">課税仕入１０％</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  消費税額
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group" style="margin-top: 0px; margin-left: 5px;">
+                                    <div class="radio-inline" style="padding-left: 0px;">
+                                      <div class="pretty p-icon p-round p-jelly">
+                                        <input type="radio" name="crzei">
+                                        <div class="state p-primary">
+                                          <label style="color: #000000; margin-top: -3px;">外税</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="radio-inline" style="padding-left: 0px;">
+                                      <div class="pretty p-icon p-round p-jelly">
+                                        <input type="radio" name="crzei">
+                                        <div class="state p-primary">
+                                          <label style="color: #000000; margin-top: -3px;">内税</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  メモ
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    請求書（0）
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card">
+                            <div class="card-header" data-background-color="blue" role="tab" id="headingTwo">
+                              貸方
+                              <div class="pull-right" style="margin-top: 10px; font-size: 11px;">
+                                金額 3,000円 税額 160円 合計 3,160円
+                              </div>
+                            </div>
+                            <div class="card-content">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    摘要１
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト摘要１
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    摘要２
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト摘要２
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  中分類
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" value="テスト中分類" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  小分類
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" value="テスト小分類" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    負担部門
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト負担部門
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    取引先
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テスト取引先
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form" style="font-size: 11px;">
+                                    プロジェクト
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  テストプロジェクト
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    相手先
+                                  </a>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                                      <option value="1">1:共通</option>
+                                      <option value="2" selected="selected">2:仕入先</option>
+                                      <option value="3">3:得意先</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" style="margin-top: -10px; margin-left: 5px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest" placeholder="半角8桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  テスト相手先
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  明細金額
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group" style="margin-top: -10px; margin-left: 5px;">
+                                    <select class="form-control" id="number" name="number" style="font-size: 11px;">
+                                      <option value="1">なし</option>
+                                      <option value="2" selected="selected">課税仕入８％</option>
+                                      <option value="3">課税仕入１０％</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  消費税額
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control text-right" id="txtPaymentDest" placeholder="数値15桁">
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group" style="margin-top: 0px; margin-left: 5px;">
+                                    <div class="radio-inline" style="padding-left: 0px;">
+                                      <div class="pretty p-icon p-round p-jelly">
+                                        <input type="radio" name="zei">
+                                        <div class="state p-primary">
+                                          <label style="color: #000000; margin-top: -3px;">外税</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="radio-inline" style="padding-left: 0px;">
+                                      <div class="pretty p-icon p-round p-jelly" style="margin-left: 0px;">
+                                        <input type="radio" name="zei">
+                                        <div class="state p-primary">
+                                          <label style="color: #000000; margin-top: -3px;">内税</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  メモ
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-group" style="margin-top: -10px;">
+                                    <input type="text" class="form-control" id="txtPaymentDest">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <a href="#" data-toggle="modal" data-target="#payment-form">
+                                    請求書（0）
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="text-center">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only" style="color: #000000;">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only" style="color: #000000;">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="pull-right" style="margin-top: -70px;">
+                          <button type="button" class="btn btn-primary">連続作成</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Edit Dialog ===== -->
+          <div class="modal" id="siharaisaki-form" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">支払先</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group label-floating" style="margin-top: -5px;">
+                                  <label class="control-label">名称</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group label-floating" style="margin-top: -5px; margin-left: 10px;">
+                                  <label class="control-label">コード</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="pull-right">
+                                  <button type="button" class="btn btn-primary">検索</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <table class="datatable table table-hover">
+                                  <thead class="text-warning">
+                                    <th>コード</th>
+                                    <th>支払先名</th>
+                                    <th>金融機関　支店</th>
+                                    <th>種</th>
+                                    <th>口座№</th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>0000000001</td>
+                                      <td>小口払現金</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td>0000002074</td>
+                                      <td>日本生命保険（相）</td>
+                                      <td>三菱東京UFJ　東京営業部</td>
+                                      <td>当</td>
+                                      <td>0671596</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div class="text-center">
+                                  <ul class="pagination" style="margin-top: -20px;">
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Previous">
+                                          <span aria-hidden="true">&laquo;</span>
+                                          <span class="sr-only" style="color: #000000;">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Next">
+                                          <span aria-hidden="true">&raquo;</span>
+                                          <span class="sr-only" style="color: #000000;">Next</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <div class="container-fluid">
+              <p class="copyright pull-right">
+                &copy;
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>
+                <a href="http://www.cs-service.co.jp">株式会社シーエスサービス</a>
+              </p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!--   Core JS Files   -->
+<script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="../assets/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="../assets/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/bootstrap-notify.js"></script>
+<script src="../assets/js/bootbox.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<!--script src="../assets/js/material-dashboard.js?v=1.2.0"></script-->
+<script src="../assets/js/material-dashboard-pro.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/js/demo.js"></script>
+
+<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="../assets/locales/bootstrap-datepicker.ja.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    // Javascript method's body can be found in assets/js/demos.js
+    demo.initDashboardPageCharts();
+
+  });
+
+  $('.datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy/mm/dd",
+    todayBtn: "linked",
+    language: "ja",
+    todayHighlight: true
+  });
+
+  function showNotification(from, align, denNo) {
+    color = Math.floor((Math.random() * 4) + 1);
+
+    var confirm = bootbox.confirm('確定します。よろしいですか?', function(result) {
+      denReg = document.getElementById("denReg");
+      patternReg = document.getElementById("patternReg");
+      regularReg = document.getElementById("regularReg");
+      if (result == true) {
+        showRegisterNotification(from, align, denNo, "0000", "0001");
+      }
+    });
+  }
+
+  function showRegisterNotification(from, align, denNo, patternNo, regularNo) {
+    denReg = document.getElementById("denReg");
+    patternReg = document.getElementById("patternReg");
+    regularReg = document.getElementById("regularReg");
+
+    message = '<div class="alert alert-info alert-with-icon" data-notify="container">' +
+      '    <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+      '    <i data-notify="icon" class="material-icons">add_alert</i>';
+    if (denReg.checked == true) {
+      message = message + '    <span data-notify="message">伝票№ ' + denNo + ' で登録しました。</span>';
+    }
+    if (patternReg.checked == true) {
+      message = message + '    <span data-notify="message">パターン ' + patternNo + ' を登録しました。</span>';
+    }
+    if (regularReg.checked == true) {
+      message = message + '    <span data-notify="message">定期・定額 ' + regularNo + ' を登録しました。</span>';
+    }
+
+    message = message + '    <button type="button" class="btn btn-primary">入力継続</button>' +
+      '    <button type="button" class="btn btn-primary">入力終了</button>' +
+      '    <p style="font-size: 10;">※入力終了すると未出力の会計伝票が自動的に出力されます。</p>' +
+      '</div>';
+
+
+    $.notify({
+      icon: "notifications",
+      message: denNo
+    }, {
+      type: type[color],
+      placement: {
+        from: from,
+        align: align
+      },
+      timer: 0,
+      template: message
+    });
+  }
+</script>
+
+</html>

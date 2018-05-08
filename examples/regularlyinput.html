@@ -1,0 +1,1478 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>会計システム - 支払入力</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css" />
+  <!-- Bootstrap core CSS     -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="../assets/css/pretty-checkbox.min.css" rel="stylesheet" />
+  <!--  Material Dashboard CSS    -->
+  <!--link href="../assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" /-->
+  <link href="../assets/css/material-dashboard-pro.css" rel="stylesheet" />
+  <!--  CSS for Demo Purpose, don't include it in your project     -->
+
+  <link href="../assets/css/demo.css" rel="stylesheet" />
+
+  <!--     Fonts and icons     -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="sidebar-mini">
+  <div id="wrapper">
+    <div class="sidebar" data-active-color="purple" data-image="../assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+            テ
+        </a>
+        <a href="#" class="simple-text logo-normal">
+            テスト 太郎
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav" style="margin-top: 1px;">
+          <li>
+            <a data-toggle="collapse" href="#pagesInputs" area-expanded="true">
+                  <i class="material-icons">input</i>
+                  <p> 新規入力
+                      <b class="caret"></b>
+                  </p>
+              </a>
+            <div id="pagesInputs" class="collapse in" area-expanded="true">
+              <ul class="nav">
+                <li>
+                  <a href="paymentinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 支払 </span>
+                    <span class="sidebar-normal"> 支払入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 預源 </span>
+                    <span class="sidebar-normal"> 預り源泉税付支払入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 仮申 </span>
+                    <span class="sidebar-normal"> 仮払申請入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 仮清 </span>
+                    <span class="sidebar-normal"> 仮払清算入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 立清 </span>
+                    <span class="sidebar-normal"> 立替清算入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="transferinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 振替 </span>
+                    <span class="sidebar-normal"> 振替入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="accountsreceivableinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 未収 </span>
+                    <span class="sidebar-normal"> 未収入金入力 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="twoinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 2 </span>
+                    <span class="sidebar-normal"> 2伝票(仮) </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a data-toggle="collapse" href="#pagesMaintenances">
+                  <i class="material-icons">view_module</i>
+                  <p> メンテナンス
+                      <b class="caret"></b>
+                  </p>
+              </a>
+            <div id="pagesMaintenances">
+              <ul class="nav">
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 伝 </span>
+                    <span class="sidebar-normal"> 伝票 </span>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="regularlyinput.html" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> 定 </span>
+                    <span class="sidebar-normal"> 定期・定額 </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style="margin: 1px 15px 0;">
+                    <span class="sidebar-mini"> パ </span>
+                    <span class="sidebar-normal"> パターン </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-minimize">
+            <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                  <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                  <i class="material-icons visible-on-sidebar-mini">view_list</i>
+              </button>
+          </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"> 定期・定額 </a>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapseHeader" style="cursor: pointer; padding: 5px;" data-background-color="orange" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    検索条件
+                  </h5>
+                  <div class="pull-right text-right" style="margin-top: -40px;">
+                    テスト定額<br> A001～A999
+                  </div>
+                </div>
+                <div id="collapseHeader" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <form style="margin: 10px">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group label-floating" style="margin-top: -5px;">
+                            <label class="control-label">名称</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group label-floating" style="margin-top: -5px;">
+                            <label class="control-label">コードFrom</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-1">
+                          <p class="text-center">～</p>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group label-floating" style="margin-top: -5px;">
+                            <label class="control-label">コードTo</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+                          <div class="pull-right">
+                            <button type="button" class="btn btn-primary">検索</button>
+                            <button type="button" class="btn btn-primary">クリア</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" data-toggle="collapse" data-parent="#accordion" data-target="#collapseDetail2" style="cursor: pointer; padding: 5px;" data-background-color="blue" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    一覧
+                  </h5>
+                  <div class="pull-right" style="margin-top: -20px;">
+                    3件
+                  </div>
+                </div>
+                <div id="collapseDetail2" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="card-block">
+                    <div class="bs-docs-section">
+                      <div class="row">
+                        <div class="col-md-12" style="margin: 0px 10px; padding-right: 30px;">
+                          <table id="detail-table" class="table nowrap table-condensed" cellspacing="0" width="100%" style="font-size: 14px;">
+                            <thead class="text-warning">
+                              <th class="list-header" style="padding-left: 0px; padding-right: 0px;">
+                                <div class="pretty p-icon p-jelly">
+                                  <input type="checkbox" />
+                                  <div class="state p-info-o">
+                                    <i class="icon mdi mdi-check-all" style="font-size: 14px;"></i>
+                                    <label style="margin-top: -5px;">　</label>
+                                  </div>
+                                </div>
+                              </th>
+                              <th class="list-header" style="padding-left: 0px;">削除</th>
+                              <th class="list-header" style="padding-left: 0px;">コード</th>
+                              <th class="list-header" style="padding-left: 0px;">名称</th>
+                              <th class="list-header">XXX</th>
+                              <th class="list-header" style="padding-left: 0px;">YYY</th>
+                              <th class="list-header" style="padding-left: 0px;">ZZZ</th>
+                              <th class="list-header" style="padding-left: 0px;">詳細</th>
+                              <th class="list-header" style="padding-left: 0px;">操作</th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A001</td>
+                                <td class="list-data">テスト定額パターン１</td>
+                                <td class="list-data">ああああ１</td>
+                                <td class="list-data">いいいい１</td>
+                                <td class="list-data">うううう１</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A002</td>
+                                <td class="list-data">テスト定額パターン２</td>
+                                <td class="list-data">ああああ２</td>
+                                <td class="list-data">いいいい２</td>
+                                <td class="list-data">うううう２</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A003</td>
+                                <td class="list-data">テスト定額パターン３</td>
+                                <td class="list-data">ああああ３</td>
+                                <td class="list-data">いいいい３</td>
+                                <td class="list-data">うううう３</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A004</td>
+                                <td class="list-data">テスト定額パターン４</td>
+                                <td class="list-data">ああああ４</td>
+                                <td class="list-data">いいいい４</td>
+                                <td class="list-data">うううう４</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A005</td>
+                                <td class="list-data">テスト定額パターン５</td>
+                                <td class="list-data">ああああ５</td>
+                                <td class="list-data">いいいい５</td>
+                                <td class="list-data">うううう５</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A006</td>
+                                <td class="list-data">テスト定額パターン６</td>
+                                <td class="list-data">ああああ６</td>
+                                <td class="list-data">いいいい６</td>
+                                <td class="list-data">うううう６</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A007</td>
+                                <td class="list-data">テスト定額パターン７</td>
+                                <td class="list-data">ああああ７</td>
+                                <td class="list-data">いいいい７</td>
+                                <td class="list-data">うううう７</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A008</td>
+                                <td class="list-data">テスト定額パターン８</td>
+                                <td class="list-data">ああああ８</td>
+                                <td class="list-data">いいいい８</td>
+                                <td class="list-data">うううう８</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A009</td>
+                                <td class="list-data">テスト定額パターン９</td>
+                                <td class="list-data">ああああ９</td>
+                                <td class="list-data">いいいい９</td>
+                                <td class="list-data">うううう９</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A010</td>
+                                <td class="list-data">テスト定額パターン１０</td>
+                                <td class="list-data">ああああ１０</td>
+                                <td class="list-data">いいいい１０</td>
+                                <td class="list-data">うううう１０</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A011</td>
+                                <td class="list-data">テスト定額パターン１１</td>
+                                <td class="list-data">ああああ１１</td>
+                                <td class="list-data">いいいい１１</td>
+                                <td class="list-data">うううう１１</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A012</td>
+                                <td class="list-data">テスト定額パターン１２</td>
+                                <td class="list-data">ああああ１２</td>
+                                <td class="list-data">いいいい１２</td>
+                                <td class="list-data">うううう１２</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A013</td>
+                                <td class="list-data">テスト定額パターン１３</td>
+                                <td class="list-data">ああああ１３</td>
+                                <td class="list-data">いいいい１３</td>
+                                <td class="list-data">うううう１３</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A014</td>
+                                <td class="list-data">テスト定額パターン１４</td>
+                                <td class="list-data">ああああ１４</td>
+                                <td class="list-data">いいいい１４</td>
+                                <td class="list-data">うううう１４</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A015</td>
+                                <td class="list-data">テスト定額パターン１５</td>
+                                <td class="list-data">ああああ１５</td>
+                                <td class="list-data">いいいい１５</td>
+                                <td class="list-data">うううう１５</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A016</td>
+                                <td class="list-data">テスト定額パターン１６</td>
+                                <td class="list-data">ああああ１６</td>
+                                <td class="list-data">いいいい１６</td>
+                                <td class="list-data">うううう１６</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A017</td>
+                                <td class="list-data">テスト定額パターン１７</td>
+                                <td class="list-data">ああああ１７</td>
+                                <td class="list-data">いいいい１７</td>
+                                <td class="list-data">うううう１７</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A018</td>
+                                <td class="list-data">テスト定額パターン１８</td>
+                                <td class="list-data">ああああ１８</td>
+                                <td class="list-data">いいいい１８</td>
+                                <td class="list-data">うううう１８</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A019</td>
+                                <td class="list-data">テスト定額パターン１９</td>
+                                <td class="list-data">ああああ１９</td>
+                                <td class="list-data">いいいい１９</td>
+                                <td class="list-data">うううう１９</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="list-data">
+                                  <div class="pretty p-icon p-jelly">
+                                    <input type="checkbox" />
+                                    <div class="state p-primary">
+                                      <i class="icon mdi mdi-check" style="font-size: 14px;"></i>
+                                      <label style="margin-top: -5px;">　</label>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="list-data">
+                                  <a href="#">
+                                    <i class="material-icons">clear</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">A020</td>
+                                <td class="list-data">テスト定額パターン２０</td>
+                                <td class="list-data">ああああ２０</td>
+                                <td class="list-data">いいいい２０</td>
+                                <td class="list-data">うううう２０</td>
+                                <td class="list-data">
+                                  <a href="#" data-toggle="modal" data-target="#detail-form"><span aria-hidden="true"></span>
+                                    <i class="material-icons">launch</i>
+                                  </a>
+                                </td>
+                                <td class="list-data">
+                                  <div class="dropdown">
+                                    <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top: 1px; margin-bottom: 1px;">
+                                      操作
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="min-width: 0px;">
+                                      <li><a href="#">入力</a></li>
+                                      <li><a href="#">修正</a></li>
+                                    </ul>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p class="bs-component" style="margin-left: 20px;">
+                            <a href="#" class="btn btn-primary btn-default btn-fixed">
+                              <i class="material-icons">remove_circle_outline</i>
+                              削除
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Edit Dialog ===== -->
+          <div class="modal" id="detail-form" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">明細</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px;">
+                                  <label for="txtTekiyo1" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      摘要１
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTekiyo1" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 20px;">
+                                テスト摘要１
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px;">
+                                  <label for="txtTyuBunrui" style="color: #000000;">
+                                    中分類
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTyuBunrui" value="テスト中分類１" disabled>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: -10px; margin-left: 2px;">
+                                  <label for="txtTyuBunrui" style="color: #000000;">
+                                    小分類
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTyuBunrui" value="テスト小分類１" disabled>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtTekiyo2" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      摘要２
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtTekiyo2" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                テスト摘要２
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="selZei" style="color: #000000;">
+                                    税処理区分
+                                  </label>
+                                  <select class="form-control" id="selZei" name="selZei">
+                                    <option value="1">なし</option>
+                                    <option value="2" selected="selected">課税仕入８％</option>
+                                    <option value="3">課税仕入１０％</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                <div class="form-group" style="margin-top: 0px; margin-left: 5px;">
+                                  <div class="radio-inline">
+                                    <div class="pretty p-icon p-round p-jelly">
+                                      <input type="radio" name="zei">
+                                      <div class="state p-primary">
+                                        <label style="color: #000000; margin-top: -3px;">外税</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="radio-inline">
+                                    <div class="pretty p-icon p-round p-jelly">
+                                      <input type="radio" name="zei">
+                                      <div class="state p-primary">
+                                        <label style="color: #000000; margin-top: -3px;">内税</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtBmn" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      負担部門
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtBmn" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                外販事業部
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtMeiKin" style="color: #000000;">
+                                    明細金額
+                                  </label>
+                                  <input type="text" class="form-control text-right" id="txtMeiKin" placeholder="数字15桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtPrj" style="color: #000000;">
+                                    <a href="#" data-toggle="modal" data-target="#payment-form">
+                                      プロジェクト
+                                    </a>
+                                  </label>
+                                  <input type="text" class="form-control" id="txtPrj" placeholder="半角6桁">
+                                </div>
+                              </div>
+                              <div class="col-md-3" style="margin-top: 30px;">
+                                テストプロジェクト
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group" style="margin-top: 0px;">
+                                  <label for="txtZeiKin" style="color: #000000;">
+                                    消費税額
+                                  </label>
+                                  <input type="text" class="form-control text-right" id="txtZeiKin" placeholder="数字15桁">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="text-center">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only" style="color: #000000;">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only" style="color: #000000;">Next</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="pull-right" style="margin-top: -70px;">
+                                <button type="button" class="btn btn-primary">連続作成</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">更新</button>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Edit Dialog ===== -->
+          <div class="modal" id="siharaisaki-form" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title">支払先</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>success</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>info</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>warning</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+                    <strong>danger</strong>：　このメッセージは閉じることができます。
+                  </div>
+                  <div class="bs-docs-section">
+                    <form class="form-horizontal">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group label-floating" style="margin-top: -5px;">
+                                  <label class="control-label">名称</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group label-floating" style="margin-top: -5px; margin-left: 10px;">
+                                  <label class="control-label">コード</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="pull-right">
+                                  <button type="button" class="btn btn-primary">検索</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <table class="datatable table table-hover">
+                                  <thead class="text-warning">
+                                    <th>コード</th>
+                                    <th>支払先名</th>
+                                    <th>金融機関　支店</th>
+                                    <th>種</th>
+                                    <th>口座№</th>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>0000000001</td>
+                                      <td>小口払現金</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td>0000002074</td>
+                                      <td>日本生命保険（相）</td>
+                                      <td>三菱東京UFJ　東京営業部</td>
+                                      <td>当</td>
+                                      <td>0671596</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div class="text-center">
+                                  <ul class="pagination" style="margin-top: -20px;">
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Previous">
+                                          <span aria-hidden="true">&laquo;</span>
+                                          <span class="sr-only" style="color: #000000;">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" style="color: #000000;">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Next">
+                                          <span aria-hidden="true">&raquo;</span>
+                                          <span class="sr-only" style="color: #000000;">Next</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <div class="container-fluid">
+              <p class="copyright pull-right">
+                &copy;
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>
+                <a href="http://www.cs-service.co.jp">株式会社シーエスサービス</a>
+              </p>
+            </div>
+          </footer>
+        </div>
+      </div>
+</body>
+<!--   Core JS Files   -->
+<script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/js/material.min.js" type="text/javascript"></script>
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="../assets/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="../assets/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="../assets/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<!--script src="../assets/js/material-dashboard.js?v=1.2.0"></script-->
+<script src="../assets/js/material-dashboard-pro.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/js/demo.js"></script>
+
+<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="../assets/locales/bootstrap-datepicker.ja.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    // Javascript method's body can be found in assets/js/demos.js
+    demo.initDashboardPageCharts();
+    $('#detail-table').DataTable({
+      oLanguage: {
+        sProcessing: '処理中...',
+        sLengthMenu: '<select class="form-control input-sm">' +
+          '<option value="10">10</option>' +
+          '<option value="20">20</option>' +
+          '<option value="30">30</option>' +
+          '<option value="40">40</option>' +
+          '<option value="50">50</option>' +
+          '</select> 件表示',
+        sZeroRecords: 'データはありません。',
+        sInfo: '_START_件～_END_件を表示（全_TOTAL_ 件中）',
+        sInfoEmpty: ' 0 件中 0 から 0 まで表示',
+        sInfoFiltered: '（全 _MAX_ 件より抽出）',
+        sInfoPostFix: '',
+        sSearch: '絞込み: ',
+        sUrl: '',
+        oPaginate: {
+          sFirst: '先頭',
+          sPrevious: '前ページ',
+          sNext: '次ページ',
+          sLast: '最終'
+        }
+      },
+      aoColumnDefs: [{
+        bSortable: false,
+        aTargets: [0, 1, 7, 8]
+      }],
+      order: [
+        [2, 'asc']
+      ],
+      searching: false,
+      bAutoWidth: false,
+      bProcessing: false,
+      iDisplayLength: 10,
+      iDisplayStart: 0,
+
+      sDom: '<"datatables-header"lfpi>rt<"datatables-footer"pi>'
+    });
+  });
+
+  $('.datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy/mm/dd",
+    todayBtn: "linked",
+    language: "ja",
+    todayHighlight: true
+  });
+
+  $("body, html").not('#menu-toggle').click(function(e) {
+    console.log(e.target);
+    if ($('#wrapper').hasClass("toggled") && !$(e.target).is('#menu-toggle, #sidebar-wrapper, #sidebar-wrapper *')) {
+      alert('asd');
+      $("#menu-toggle").trigger("click");
+    }
+
+
+  });
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    alert('asd');
+  });
+
+  function showNotification(from, align, denNo) {
+    color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: "notifications",
+      message: denNo
+    }, {
+      type: type[color],
+      placement: {
+        from: from,
+        align: align
+      },
+      timer: 0,
+      template: '<div class="alert alert-info alert-with-icon" data-notify="container">' +
+        '    <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+        '    <i data-notify="icon" class="material-icons">add_alert</i>' +
+        '    <span data-notify="message">伝票№ {2} で登録しました。</span>' +
+        '    <button type="button" class="btn btn-primary">入力継続</button>' +
+        '    <button type="button" class="btn btn-primary">入力終了</button>' +
+        '    <p style="font-size: 10;">※入力終了すると未出力の会計伝票が自動的に出力されます。</p>' +
+        '</div>'
+
+    });
+  }
+</script>
+
+</html>
